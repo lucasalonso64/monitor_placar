@@ -10,11 +10,23 @@ export default class PlacarContainer extends React.Component {
         this.state = {
             gols_casa: 0,
             gols_visitante: 0,
-            num1:0,num2:0,resultado:0,
-            }
-            this.calcular = this.calcular.bind(this)
-    }
+            num1: undefined, 
+            num2: undefined, 
+            resultado: 0,
 
+            n: 0,
+            pagar:0,
+            valor:1000
+        }
+        this.calcular = this.calcular.bind(this)
+    }
+    limparCampos = () => {
+        this.setState({
+            num1: '',
+            num2: '',
+            resultado: '',
+        })
+      }
 
     marcarGolCasa() {
         this.setState({
@@ -29,12 +41,21 @@ export default class PlacarContainer extends React.Component {
     }
 
     calcular(){
-        let soma = parseInt(this.state.num1) + parseInt(this.state.num2)
-        let r = this.state
-        r.res = soma
-        this.setState(r)
-    }
+        console.log('this.state.num1')
+        let resultado = parseInt(this.state.num1) + parseInt(this.state.num2)
+        this.setState({ resultado})
 
+    
+        }
+        
+
+    Pagar(){
+        this.setState({
+           // pagar:this.state.valor/(Math.pow(1.03,this.state.n+1))
+           resultado: this.state.resultado
+         
+        })
+    }
 
     render() {
         return (
@@ -63,16 +84,19 @@ export default class PlacarContainer extends React.Component {
                 <div>
                     <br />
                     <label>Valor 1: </label>
-                    <input type="text" value={this.props.num1} />
+                    <input type="text" value={this.state.num1} />
                     <br />  <br />
                     <label>Valor 2: </label>
-                    <input type="text" value={this.props.num2} />
+                    <input type="text" value={this.state.num2} />
                     <br />  <br />
                     <label>Resultado: </label>
-                    <input type="text" value={this.props.resultado} />
-                    <button id="somar" onClick="calcular()">Calcular</button>
-                    
+                    <input type="text" value={this.state.resultado} />
+                    <button onClick={this.calcular.bind(this)}>Calcular</button>
+                    <button onClick={this.limparCampos.bind(this)}>Limpar</button>
+
                 </div>
+
+     
 
             </div>
 
