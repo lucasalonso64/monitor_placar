@@ -41,19 +41,15 @@ export default class PlacarContainer extends React.Component {
     }
 
     calcular(){
-        console.log('this.state.num1')
         let resultado = parseInt(this.state.num1) + parseInt(this.state.num2)
-        this.setState({ resultado})
-
-    
+        this.setState({ resultado})    
         }
         
 
     Pagar(){
         this.setState({
            // pagar:this.state.valor/(Math.pow(1.03,this.state.n+1))
-           resultado: this.state.resultado
-         
+           resultado: this.state.resultado         
         })
     }
 
@@ -84,10 +80,10 @@ export default class PlacarContainer extends React.Component {
                 <div>
                     <br />
                     <label>Valor 1: </label>
-                    <input type="text" value={this.state.num1} />
+                    <input type="text" value={this.state.num1} onChange={e => this.setState({ num1: e.target.value })}/>
                     <br />  <br />
                     <label>Valor 2: </label>
-                    <input type="text" value={this.state.num2} />
+                    <input type="text" value={this.state.num2} onChange={e => this.setState({ num2: e.target.value })} />
                     <br />  <br />
                     <label>Resultado: </label>
                     <input type="text" value={this.state.resultado} />
