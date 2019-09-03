@@ -11,7 +11,12 @@ export default class Partida extends React.Component {
                    <spam> - </spam>
                    <spam>{this.props.horario}</spam>
                </div>
+               <div>
+                
             </div>
+              
+            </div>
+           
         )
        
     }
